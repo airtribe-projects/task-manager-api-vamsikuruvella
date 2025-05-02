@@ -2,9 +2,9 @@
   "tasks": [
     {
       "id": 1,
-      "title": "Set up environment",
-      "description": "Install Node.js, npm, and git",
-      "completed": true
+      "title": "Updated Task",
+      "description": "Updated Task Description",
+      "completed": "true"
     },
     {
       "id": 2,
@@ -95,6 +95,12 @@
       "title": "Install axios",
       "description": "Install axios as a development dependency",
       "completed": true
+    },
+    {
+      "id": 17,
+      "title": "New Task",
+      "description": false,
+      "completed": ""
     }
   ]
 }
