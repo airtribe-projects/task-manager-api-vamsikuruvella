@@ -89,6 +89,12 @@
       "title": "Install jsonwebtoken",
       "description": "Install jsonwebtoken",
       "completed": false
+    },
+    {
+      "id": 16,
+      "title": "Install axios",
+      "description": "Install axios as a development dependency",
+      "completed": true
     }
   ]
 }
