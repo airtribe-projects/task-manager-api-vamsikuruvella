@@ -1,173 +1,107 @@
+# 📝 Task Manager API
 
-# Task Manager API
+A simple RESTful API built with **Express.js** to manage your tasks. You can create, read, update, delete, filter, and sort tasks with ease.
 
-A simple RESTful API for managing tasks using Node.js and Express.  
-Supports task creation, retrieval, filtering, sorting, updating, and deletion.
+## 🚀 Features
 
-## 🛠️ Features
+* Add new tasks with a title, description, completion status, and priority.
+* Get all tasks, or filter by:
 
-- Create new tasks
-- Retrieve all tasks
-- Filter tasks by completion status
-- Sort tasks by creation date
-- Filter tasks by priority (`low`, `medium`, `high`)
-- Update and delete tasks
+  * ✅ Completion status (`true` or `false`)
+  * 🕽 Priority level (`low`, `medium`, `high`)
+* Sort tasks by creation date.
+* Update or delete existing tasks.
 
----
+## 📆 Sample Task Structure
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm (Node package manager)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/task-manager-api.git
-cd task-manager-api
-
-# Install dependencies
-npm install
-```
-
-### Running the Server
-
-```bash
-# Start the server
-node app.js
-```
-
-> 📌 Server runs on **http://localhost:3000** or **assigned port in Codespaces**.
-
----
-
-## 📚 API Endpoints
-
-### 🟢 Create a Task
-
-**POST** `/tasks`
-
-- **Body Parameters** (JSON):
 ```json
 {
-  "title": "Task Title",
-  "description": "Details about the task",
+  "id": 1,
+  "title": "Example Task title",
+  "description": "Describe Task implemented",
+  "completed": true,
+  "date": "2025-05-02",
+  "priority": "low"
+}
+```
+
+## 📡 API Endpoints
+
+### ➕ Create a Task
+
+```
+POST /tasks
+```
+
+**Request Body:**
+
+```json
+{
+  "title": "Write documentation",
+  "description": "Add README.md",
   "completed": false,
   "priority": "medium"
 }
 ```
 
-- **Success Response**:
-```json
-{
-  "id": 3,
-  "title": "...",
-  "description": "...",
-  "completed": false,
-  "priority": "medium",
-  "date": "2025-05-02"
-}
+### 📥 Get All Tasks
+
+```
+GET /tasks
 ```
 
----
+**Query Parameters (Optional):**
 
-### 🔵 Get All Tasks
+* `?completed=true` – Only show completed tasks
+* `?completed=false` – Only show incomplete tasks
 
-**GET** `/tasks`
+Tasks are sorted by their creation date (oldest first).
 
-- **Optional Query Parameter**:
-  - `completed=true`
-  - `completed=false`
+### 🎯 Get a Task by ID
 
-- **Response**: Sorted list of tasks by `date` (ascending)
-
----
-
-### 🔍 Get Task by ID
-
-**GET** `/tasks/:id`
-
-- Example: `/tasks/2`
-
-- **Response**:
-```json
-{
-  "id": 2,
-  "title": "Create POST",
-  ...
-}
+```
+GET /tasks/:id
 ```
 
----
+### 🌺 Get Tasks by Priority
 
-### 🔶 Get Tasks by Priority
+```
+GET /tasks/priority/:level
+```
 
-**GET** `/tasks/priority/:level`
+* `:level` can be `low`, `medium`, or `high`
 
-- Example: `/tasks/priority/medium`
+### ✏️ Update a Task
 
-- `:level` can be `low`, `medium`, or `high`.
+```
+PUT /tasks/:id
+```
 
----
+**Request Body:**
 
-### ✏️ Update Task
+Same as task creation body.
 
-**PUT** `/tasks/:id`
+### ❌ Delete a Task
 
-- **Body Parameters**: Same as POST
-- Preserves original task `date`.
+```
+DELETE /tasks/:id
+```
 
----
+## 🚲 Tech Stack
 
-### ❌ Delete Task
+* **Node.js**
+* **Express.js**
 
-**DELETE** `/tasks/:id`
+## ▶️ Run the Server
 
-- Deletes the task with the given ID.
-
----
-
-## 🧪 Testing the API
-
-You can test the API using tools like:
-
-- [Postman](https://www.postman.com/)
-- [curl](https://curl.se/)
-- [Thunder Client](https://www.thunderclient.com/) (VS Code extension)
-
-Example using curl:
 ```bash
-curl -X POST http://localhost:3000/tasks \
--H "Content-Type: application/json" \
--d '{"title":"Test","description":"Try task","completed":false,"priority":"low"}'
+node app.js
 ```
 
----
+Server runs at:
 
-## 📄 Sample Task Object Format
-
-```json
-{
-  "id": 0,
-  "title": "Sample Task",
-  "description": "Describe the task",
-  "completed": false,
-  "priority": "low",
-  "date": "YYYY-MM-DD"
-}
+```
+http://localhost:3000
 ```
 
----
-
-## 📦 License
-
-MIT License
-
----
-
-## 👨‍💻 Author
-
-[Vamsi Kuruvella](https://github.com/your-username)
+Or on your Codespace public port if you're using GitHub Codespaces.
