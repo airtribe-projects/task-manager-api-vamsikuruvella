@@ -104,7 +104,7 @@ app.delete("/tasks/:id", (req, res) => {
   res.status(200).send();
 });
 
-app.listen(3000,()=>{
+app.listen(3000, '0.0.0.0', () => {
   console.log("Running Server on Port 3000");
 })
 module.exports = app;
